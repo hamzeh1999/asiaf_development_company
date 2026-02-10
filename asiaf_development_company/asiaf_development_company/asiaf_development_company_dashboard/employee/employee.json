@@ -1,0 +1,26 @@
+{
+ "cards": [
+  {}
+ ],
+ "charts": [
+  {
+   "width": "Half"
+  },
+  {
+   "chart": "Employee Advance Status",
+   "width": "Half"
+  }
+ ],
+ "creation": "2026-02-10 20:58:52.403613",
+ "dashboard_name": "Employee",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2026-02-10 20:58:52.403613",
+ "modified_by": "Administrator",
+ "module": "Asiaf Development Company",
+ "name": "Employee",
+ "owner": "Administrator"
+}
