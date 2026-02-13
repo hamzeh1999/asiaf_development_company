@@ -1,0 +1,67 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-12 19:00:27.526124",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "maintenance_date_section",
+  "maintenance_by",
+  "maintenance_date",
+  "maintenance_type",
+  "description",
+  "cost"
+ ],
+ "fields": [
+  {
+   "fieldname": "maintenance_date_section",
+   "fieldtype": "Section Break",
+   "label": "Maintenance Date"
+  },
+  {
+   "fieldname": "maintenance_by",
+   "fieldtype": "Link",
+   "label": "Maintenance By",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "maintenance_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Maintenance Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "maintenance_type",
+   "fieldtype": "Select",
+   "label": "Maintenance Type",
+   "options": "Repair\nPainting\nService\nElectrical\nOther"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "cost",
+   "fieldtype": "Currency",
+   "label": "Cost"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-02-12 19:14:55.601860",
+ "modified_by": "Administrator",
+ "module": "Asiaf Development Company",
+ "name": "Asset Maintenance Entry",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
