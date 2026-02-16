@@ -6,12 +6,13 @@
  "engine": "InnoDB",
  "field_order": [
   "employee_assignment_section",
-  "employee",
+  "column_break_hxqn",
   "project",
   "project_site",
+  "position",
+  "employee",
   "start_date",
   "end_date",
-  "position",
   "status"
  ],
  "fields": [
@@ -19,14 +20,6 @@
    "fieldname": "employee_assignment_section",
    "fieldtype": "Section Break",
    "label": "Employee Project Assignment"
-  },
-  {
-   "fieldname": "employee",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Employee",
-   "options": "Employee",
-   "reqd": 1
   },
   {
    "fieldname": "project",
@@ -56,24 +49,34 @@
    "label": "End Date"
   },
   {
-   "fieldname": "position",
-   "fieldtype": "Select",
-   "label": "Position ",
-   "options": "Maintenance Worker\nCleaner\nDriver\nSite Supervisor\nSite Engineer\nProject Manager\nSecurity Guard\nGeneral Assistant",
-   "reqd": 1
-  },
-  {
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status ",
    "options": "Active\nCompleted\nTransferred",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_hxqn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "position",
+   "fieldtype": "Link",
+   "label": "Position",
+   "options": "Designation",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "label": "Employee",
+   "options": "Employee"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-10 23:08:47.975620",
+ "modified": "2026-02-16 02:20:32.463595",
  "modified_by": "Administrator",
  "module": "Asiaf Project",
  "name": "Employee Assignment",
