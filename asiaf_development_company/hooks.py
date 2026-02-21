@@ -5,6 +5,7 @@ app_description = "Asiaf Development Company provides integrated facility manage
 app_email = "fshureih@enarainc.com"
 app_license = "mit"
 
+
 # Apps
 # ------------------
 
@@ -25,7 +26,7 @@ app_license = "mit"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/asiaf_development_company/css/asiaf_development_company.css"
+app_include_css = "/assets/asiaf_development_company/css/custom.css"
 # app_include_js = "/assets/asiaf_development_company/js/asiaf_development_company.js"
 
 # include js, css files in header of web template
