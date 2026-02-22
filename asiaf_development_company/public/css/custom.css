@@ -1,3 +1,7 @@
+/* =============================== */
+/*      Asiaf Desk Theme CSS       */
+/* =============================== */
+
 /* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
@@ -6,7 +10,7 @@
     --font-stack: 'Cairo', sans-serif !important;
 }
 
-/* Force apply everywhere */
+/* Force font everywhere */
 body,
 .layout-main-section,
 .page-content,
@@ -15,4 +19,28 @@ body,
 .modal,
 .dropdown-menu {
     font-family: 'Cairo', sans-serif !important;
+}
+
+/* Full page background */
+body {
+    background-image: url("/files/backgroundasiaf.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Make Desk main sections transparent so background shows */
+.layout-main-section,
+.page-content,
+.form-section,
+.card,
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Editor background transparent */
+.content,
+.codex-editor__redactor {
+    background: transparent !important;
 }
