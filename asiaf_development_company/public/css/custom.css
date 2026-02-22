@@ -2,7 +2,7 @@
 /*      Asiaf Desk Theme CSS       */
 /* =============================== */
 
-/* Import Font */
+/* Import Cairo Font */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
 /* Override Frappe root font variable */
@@ -17,30 +17,47 @@ body,
 .form-control,
 .input-with-feedback,
 .modal,
-.dropdown-menu {
+.dropdown-menu,
+.dropdown-item,
+.navbar,
+.sidebar {
     font-family: 'Cairo', sans-serif !important;
 }
 
-/* Full page background */
+/* Full page background for Desk */
 body {
-    background-image: url("/files/backgroundasiaf.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background-image: url("/files/backgroundasiaf.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
 }
 
-/* Make Desk main sections transparent so background shows */
+/* Make Desk sections transparent to show background */
 .layout-main-section,
 .page-content,
 .form-section,
 .card,
 .modal-content {
     background-color: rgba(255, 255, 255, 0.92) !important;
+    border-radius: 10px !important;
 }
 
 /* Editor background transparent */
 .content,
 .codex-editor__redactor {
     background: transparent !important;
+}
+
+/* Optional: smooth transitions for hover/focus */
+* {
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* Optional: hover effects for cards/buttons */
+.card:hover,
+.btn:hover,
+.dropdown-item:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15) !important;
 }
