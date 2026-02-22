@@ -1,40 +1,18 @@
-/* ============================= */
-/*        Asiaf Theme CSS        */
-/* ============================= */
-
-/* Import Cairo Font */
+/* Import Font */
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
-/* Apply font globally */
-html, body {
-    font-family: 'Cairo', sans-serif !important;
+/* Override Frappe root font variable */
+:root {
+    --font-stack: 'Cairo', sans-serif !important;
 }
 
-/* Full page background (stable for Desk & Website) */
-body {
-    background-image: url("/files/backgroundasiaf.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-/* Editor Background (for text editor areas) */
-.content,
-.codex-editor__redactor {
-    background: transparent !important;
-}
-
-/* Optional: make cards slightly transparent for better readability */
+/* Force apply everywhere */
+body,
 .layout-main-section,
-.card,
-.form-section,
-.page-content {
-    background-color: rgba(255, 255, 255, 0.92) !important;
-    border-radius: 8px;
-}
-
-/* Optional: smoother UI */
-* {
-    transition: all 0.2s ease-in-out;
+.page-content,
+.form-control,
+.input-with-feedback,
+.modal,
+.dropdown-menu {
+    font-family: 'Cairo', sans-serif !important;
 }
