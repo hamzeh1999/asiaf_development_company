@@ -5,9 +5,8 @@ html, body {
 }
 
 .content,.codex-editor__redactor {
-    background-image: url("/files/bbc7f7c0-bb67-4243-8614-e53d24da9945.jpg");
+    background-image: url("/files/backgroundasiaf.png");
     background-repeat: no-repeat; /* Optional: prevents image from repeating */
     background-size: cover; /* Optional: covers the entire element without distortion */
     background-position: center; /* Optional: centers the image */
 }
-
