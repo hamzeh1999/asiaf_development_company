@@ -1,90 +1,63 @@
- /* =============================== */
- /*      Asiaf Desk Theme CSS       */
- /* =============================== */
+/* =============================== */
+/*      Asiaf Desk Theme CSS       */
+/* =============================== */
 
- /* Import Cairo Font */
- @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+/* Import Cairo Font */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
- /* Override Frappe root font variable */
- :root {
-     --font-stack: 'Cairo', sans-serif !important;
- }
+/* Override Frappe root font variable */
+:root {
+    --font-stack: 'Cairo', sans-serif !important;
+}
 
- /* Force font everywhere */
- body,
- .layout-main-section,
- .page-content,
- .form-control,
- .input-with-feedback,
- .modal,
- .dropdown-menu,
- .dropdown-item,
- .navbar,
- .sidebar {
-     font-family: 'Cairo', sans-serif !important;
- }
+/* Force font everywhere */
+body,
+.layout-main-section,
+.page-content,
+.form-control,
+.input-with-feedback,
+.modal,
+.dropdown-menu,
+.dropdown-item,
+.navbar,
+.sidebar {
+    font-family: 'Cairo', sans-serif !important;
+}
 
- /* Full page background for Desk */
- html, body {
-     height: 100% !important;
-     min-height: 100% !important;
-     margin: 0 !important;
-     padding: 0 !important;
- }
+/* Full page background for Desk */
+body {
+    background-image: url("/files/backgroundasiaf.png") !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-attachment: fixed !important;
+}
 
- body {
-     background-image: url("/files/backgroundasiaf.png") !important;
-     background-repeat: no-repeat !important;
-     background-size: cover !important;
-     background-position: center center !important;
-     background-attachment: fixed !important;
- }
+/* Make Desk sections transparent to show background */
+.layout-main-section,
+.page-content,
+.form-section,
+.card,
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.92) !important;
+    border-radius: 10px !important;
+}
 
- /* Make Desk sections transparent to show background */
- .layout-main-section,
- .page-content,
- .form-section,
- .card,
- .modal-content {
-     background-color: rgba(255, 255, 255, 0.92) !important;
-     border-radius: 10px !important;
- }
+/* Editor background transparent */
+.content,
+.codex-editor__redactor {
+    background: transparent !important;
+}
 
- /* Editor background transparent */
- .content,
- .codex-editor__redactor {
-     background: transparent !important;
- }
+/* Optional: smooth transitions for hover/focus */
+* {
+    transition: all 0.2s ease-in-out !important;
+}
 
- /* Desktop container full height */
- .desktop-container {
-     position: relative !important;
-     min-height: 100vh !important;
-     padding: 20px !important;
-     display: flex !important;
-     flex-direction: column !important;
-     z-index: 1 !important;
- }
-
- /* Icons container adjustments */
- .icons-container {
-     display: grid !important;
-     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)) !important;
-     gap: 15px !important;
-     justify-items: center !important;
-     align-items: start !important;
- }
-
- /* Optional: smooth transitions for hover/focus */
- * {
-     transition: all 0.2s ease-in-out !important;
- }
-
- /* Optional: hover effects for cards/buttons */
- .card:hover,
- .btn:hover,
- .dropdown-item:hover,
- .desktop-icon:hover {
-     transform: translateY(-2px) !important;
-     box-shadow: 0 5px 15px rgba(0,0,0,0.15) !important;
- }
+/* Optional: hover effects for cards/buttons */
+.card:hover,
+.btn:hover,
+.dropdown-item:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15) !important;
+}
