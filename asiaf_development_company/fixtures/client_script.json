@@ -1,0 +1,46 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset",
+  "enabled": 1,
+  "modified": "2026-02-15 01:06:16.206597",
+  "module": "Asiaf Development Company",
+  "name": "Asset Maintenance Auto Calculate",
+  "script": "frappe.ui.form.on('Asset', {\r\n\r\n    custom__last_maintenance_date: function(frm) {\r\n        calculate_next_date(frm);\r\n    },\r\n\r\n    custom_maintenance_interval: function(frm) {\r\n        calculate_next_date(frm);\r\n    },\r\n\r\n    custom_maintenance_frequency_type: function(frm) {\r\n        calculate_next_date(frm);\r\n    }\r\n\r\n});\r\n\r\nfunction calculate_next_date(frm) {\r\n\r\n    if (!frm.doc.custom__last_maintenance_date || \r\n        !frm.doc.custom_maintenance_interval || \r\n        !frm.doc.custom_maintenance_frequency_type) {\r\n        return;\r\n    }\r\n\r\n    let last_date = frappe.datetime.str_to_obj(frm.doc.custom__last_maintenance_date);\r\n    let interval = parseInt(frm.doc.custom_maintenance_interval);\r\n    let frequency = frm.doc.custom_maintenance_frequency_type;\r\n\r\n    if (frequency === \"Daily\") {\r\n        last_date.setDate(last_date.getDate() + interval);\r\n    }\r\n\r\n    if (frequency === \"Weekly\") {\r\n        last_date.setDate(last_date.getDate() + (7 * interval));\r\n    }\r\n\r\n    if (frequency === \"Monthly\") {\r\n        last_date.setMonth(last_date.getMonth() + interval);\r\n    }\r\n\r\n    if (frequency === \"Yearly\") {\r\n        last_date.setFullYear(last_date.getFullYear() + interval);\r\n    }\r\n\r\n    frm.set_value(\"custom__next_maintenance_date\",\r\n        frappe.datetime.obj_to_str(last_date)\r\n    );\r\n}\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset",
+  "enabled": 1,
+  "modified": "2026-02-15 22:20:33.029431",
+  "module": "Asiaf Development Company",
+  "name": "Auto Fill Item Code From Custom Category",
+  "script": "frappe.ui.form.on('Asset', {\r\n\r\n    custom_asset_category_custom: function(frm) {\r\n\r\n        if (frm.doc.custom_asset_category_custom) {\r\n\r\n            frm.set_value('item_code', frm.doc.custom_asset_category_custom);\r\n\r\n        }\r\n\r\n    }\r\n\r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset",
+  "enabled": 1,
+  "modified": "2026-02-16 03:44:11.744843",
+  "module": "Asiaf Development Company",
+  "name": "Link_to_Link",
+  "script": "",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset",
+  "enabled": 1,
+  "modified": "2026-02-23 17:03:08.629598",
+  "module": "Asiaf Development Company",
+  "name": "Asset_Category_new",
+  "script": "frappe.ui.form.on('Asset', {\r\n\r\n    // Setup stage\r\n    setup: function(frm) {\r\n        frm.set_query('custom_name', function() {\r\n            return {\r\n                filters: {\r\n                    asset_category_name: frm.doc.custom_category\r\n                }\r\n            };\r\n        });\r\n    },\r\n\r\n    // When category changes\r\n    custom_category: function(frm) {\r\n        frm.set_value('custom_name', null);\r\n        frm.set_value('custom_asset_number', null);\r\n    },\r\n\r\n    // When name is selected\r\n    custom_name: function(frm) {\r\n        if (frm.doc.custom_name) {\r\n            frm.set_value('custom_asset_number', frm.doc.custom_name);\r\n        } else {\r\n            frm.set_value('custom_asset_number', null);\r\n        }\r\n    }\r\n\r\n});",
+  "view": "Form"
+ }
+]
