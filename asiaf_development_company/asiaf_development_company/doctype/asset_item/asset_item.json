@@ -1,14 +1,16 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series: naming_series",
  "creation": "2026-02-16 02:15:49.310062",
  "doctype": "DocType",
+ "document_type": "Setup",
  "engine": "InnoDB",
  "field_order": [
   "asset_item_section",
   "asset_item",
   "asset_category_name",
-  "series_key"
+  "naming_series"
  ],
  "fields": [
   {
@@ -21,31 +23,36 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Asset Item",
-   "reqd": 1
+   "reqd": 1,
+   "unique": 1
   },
   {
    "fieldname": "asset_category_name",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Asset Category Name",
+   "options": "Asset Category",
    "reqd": 1
   },
   {
-   "fieldname": "series_key",
+   "fieldname": "naming_series",
    "fieldtype": "Select",
-   "hidden": 1,
    "label": "Series",
+   "no_copy": 1,
    "options": "Asset -ITT",
-   "read_only": 1
+   "read_only": 1,
+   "reqd": 1,
+   "set_only_once": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-16 02:29:37.382803",
+ "modified": "2026-02-23 17:51:34.122164",
  "modified_by": "Administrator",
  "module": "Asiaf Development Company",
  "name": "Asset_Item",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -63,7 +70,11 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "asset_category_name,asset_item ",
+ "show_name_in_global_search": 1,
+ "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "asset_item"
 }

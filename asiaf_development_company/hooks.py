@@ -4,6 +4,20 @@ app_publisher = "EnAi Team Development & Research"
 app_description = "Asiaf Development Company provides integrated facility management, engineering, and support services in Saudi Arabia, delivering efficient, safe, and customized solutions for businesses and public spaces."
 app_email = "fshureih@enarainc.com"
 app_license = "mit"
+fixtures = [
+    {
+        "dt": "Custom Field"
+    },
+    {
+        "dt": "Property Setter"
+    },
+    {
+        "dt": "Client Script"
+    },
+    {
+        "dt": "Server Script"
+    }
+]
 
 
 # Apps
