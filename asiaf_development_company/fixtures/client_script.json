@@ -2,6 +2,50 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
+  "dt": "Employee Assignment",
+  "enabled": 1,
+  "modified": "2026-02-12 02:33:02.018821",
+  "module": "Asiaf Development Company",
+  "name": "Filter the Cites",
+  "script": "frappe.ui.form.on('Employee Assignment', {\r\n    refresh: function(frm) {\r\n        // تفعيل الفلتر عند تحميل الصفحة\r\n        frm.set_query('project_site', function() {\r\n            return {\r\n                filters: {\r\n                    'project': frm.doc.project\r\n                }\r\n            };\r\n        });\r\n    },\r\n\r\n    project: function(frm) {\r\n        // عند تغيير المشروع، يفرغ حقل الموقع القديم ويعيد الفلترة\r\n        frm.set_value('project_site', '');\r\n        frm.set_query('project_site', function() {\r\n            return {\r\n                filters: {\r\n                    'project': frm.doc.project\r\n                }\r\n            };\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Asset",
+  "enabled": 1,
+  "modified": "2026-02-15 22:20:33.029431",
+  "module": "Asiaf Development Company",
+  "name": "Auto Fill Item Code From Custom Category",
+  "script": "frappe.ui.form.on('Asset', {\r\n\r\n    custom_asset_category_custom: function(frm) {\r\n\r\n        if (frm.doc.custom_asset_category_custom) {\r\n\r\n            frm.set_value('item_code', frm.doc.custom_asset_category_custom);\r\n\r\n        }\r\n\r\n    }\r\n\r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee",
+  "enabled": 1,
+  "modified": "2026-02-27 01:55:08.633292",
+  "module": "Asiaf Development Company",
+  "name": "Employee Validation personal Details",
+  "script": "frappe.ui.form.on('Employee', {\r\n    validate: function(frm) {\r\n        \r\n        // \r\n        if (frm.doc.custom_national_id_number) {\r\n            if (!/^1[0-9]{9}$/.test(frm.doc.custom_national_id_number)) {\r\n                frappe.msgprint(__('عفواً، يجب أن تتكون الهوية الوطنية من 10 أرقام فقط وتبدأ برقم 1.'));\r\n                frappe.validated = false;\r\n            }\r\n        }\r\n        \r\n        //\r\n        if (frm.doc.custom_iqama_number) {\r\n            if (!/^2[0-9]{9}$/.test(frm.doc.custom_iqama_number)) {\r\n                frappe.msgprint(__('عفواً، يجب أن يتكون رقم الإقامة من 10 أرقام فقط ويبدأ برقم 2.'));\r\n                frappe.validated = false;\r\n            }\r\n        }\r\n\r\n        //\r\n        if (frm.doc.custom_border_number) {\r\n            if (!/^[34][0-9]{9}$/.test(frm.doc.custom_border_number)) {\r\n                frappe.msgprint(__('عفواً، يجب أن يتكون رقم الحدود من 10 أرقام ويبدأ برقم 3 أو 4.'));\r\n                frappe.validated = false;\r\n            }\r\n        }\r\n\r\n        // \r\n        if (frm.doc.custom_gcc_id_card) {\r\n            if (!/^[0-9]{8,15}$/.test(frm.doc.custom_gcc_id_card)) {\r\n                frappe.msgprint(__('عفواً، رقم الهوية الخليجية يجب أن يتكون من 8 إلى 15 رقماً.'));\r\n                frappe.validated = false;\r\n            }\r\n        }\r\n\r\n        // \r\n        if (frm.doc.custom_saudi_mother_id) {\r\n            if (!/^1[0-9]{9}$/.test(frm.doc.custom_saudi_mother_id)) {\r\n                frappe.msgprint(__('عفواً، هوية الأم السعودية يجب أن تتكون من 10 أرقام وتبدأ برقم 1.'));\r\n                frappe.validated = false;\r\n            }\r\n        }\r\n        \r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Employee",
+  "enabled": 1,
+  "modified": "2026-02-27 01:56:21.809081",
+  "module": "Asiaf Development Company",
+  "name": "Filter Designations by Grade",
+  "script": "frappe.ui.form.on('Employee', {\r\n    refresh: function(frm) {\r\n        apply_designation_filter(frm);\r\n    },\r\n    grade: function(frm) {\r\n        frm.set_value('designation', ''); // تفريغ المسمى عند تغيير الدرجة\r\n        apply_designation_filter(frm);\r\n    }\r\n});\r\n\r\nfunction apply_designation_filter(frm) {\r\n    if (!frm.doc.grade) {\r\n        // إذا لم يتم اختيار درجة، افتح القائمة بالكامل (أو اتركها كما هي)\r\n        frm.set_query(\"designation\", function() {\r\n            return {};\r\n        });\r\n        return;\r\n    }\r\n\r\n    frappe.db.get_doc('Employee Grade', frm.doc.grade)\r\n        .then(grade_doc => {\r\n            \r\n            // سحب البيانات من الجدول الفرعي\r\n            let child_table_data = grade_doc.custom_allowed_designations || grade_doc.allowed_designations || grade_doc.designations;\r\n\r\n            if (child_table_data && child_table_data.length > 0) {\r\n                // استخراج المسميات\r\n                let valid_designations = child_table_data.map(row => row.designation);\r\n                \r\n                // تطبيق الفلتر بصمت\r\n                frm.set_query(\"designation\", function() {\r\n                    return {\r\n                        filters: [\r\n                            [\"name\", \"in\", valid_designations]\r\n                        ]\r\n                    };\r\n                });\r\n            } else {\r\n                // إذا لم يجد مسميات للدرجة، يغلق القائمة\r\n                frm.set_query(\"designation\", function() {\r\n                    return {\r\n                        filters: [\r\n                            [\"name\", \"in\", [\"لا توجد وظائف\"]] \r\n                        ]\r\n                    };\r\n                });\r\n            }\r\n        });\r\n}",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
   "dt": "Asset",
   "enabled": 1,
   "modified": "2026-02-27 00:13:36.401762",

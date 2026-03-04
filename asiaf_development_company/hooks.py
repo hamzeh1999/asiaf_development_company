@@ -16,8 +16,12 @@ fixtures = [
     },
     {
         "dt": "Server Script"
+    },
+        {
+        "dt": "Workspace"
     }
 ]
+
 
 
 # Apps
