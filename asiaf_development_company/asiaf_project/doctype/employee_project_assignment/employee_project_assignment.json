@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-02-25 17:05:24.338092",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "employees_table",
+  "custom_project",
+  "custom_site",
+  "site_name",
+  "site_address",
+  "service_type",
+  "job_title",
+  "quantity",
+  "add_employee_button",
+  "employee_table",
+  "active"
+ ],
+ "fields": [
+  {
+   "fetch_from": "custom_site.site_name",
+   "fieldname": "site_name",
+   "fieldtype": "Data",
+   "label": "Site Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "custom_site.address",
+   "fieldname": "site_address",
+   "fieldtype": "Data",
+   "label": "Site Address",
+   "read_only": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "active",
+   "fieldtype": "Check",
+   "label": "Active",
+   "read_only": 1
+  },
+  {
+   "fieldname": "custom_project",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "custom_site",
+   "fieldtype": "Link",
+   "label": "Site Location",
+   "options": "Project Site",
+   "reqd": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "label": "Service Type",
+   "options": "Private Sector\nGovernment Sector"
+  },
+  {
+   "default": "0",
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "label": "Quantity "
+  },
+  {
+   "button_color": "Default",
+   "fieldname": "add_employee_button",
+   "fieldtype": "Button",
+   "label": "Assign Employees"
+  },
+  {
+   "fieldname": "employees_table",
+   "fieldtype": "Section Break",
+   "label": "Employees"
+  },
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Select",
+   "label": "Job Title",
+   "options": "Software Developer\nDeveloper"
+  },
+  {
+   "fieldname": "employee_table",
+   "fieldtype": "Table",
+   "label": "Employees",
+   "options": "Project Employee Assignment Item",
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-03 11:09:46.934201",
+ "modified_by": "Administrator",
+ "module": "Asiaf Project",
+ "name": "Employee Project Assignment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class EmployeeAssignment(Document):
+class AdministrativeRegion(Document):
 	pass

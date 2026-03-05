@@ -285,7 +285,7 @@
   "property": "hidden",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "Employee Evaluation"
  },
  {
   "default_value": null,
@@ -573,7 +573,7 @@
   "property": "show_dashboard",
   "property_type": "Check",
   "row_name": null,
-  "value": "0"
+  "value": "1"
  },
  {
   "default_value": null,
@@ -637,7 +637,7 @@
   "property": "in_standard_filter",
   "property_type": "Check",
   "row_name": null,
-  "value": "0"
+  "value": "1"
  },
  {
   "default_value": null,
@@ -2269,7 +2269,7 @@
   "property": "print_hide",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "Passport Expiry Date"
  },
  {
   "default_value": null,
@@ -2685,7 +2685,7 @@
   "property": "track_changes",
   "property_type": "Check",
   "row_name": null,
-  "value": "0"
+  "value": "1"
  },
  {
   "default_value": null,
@@ -2749,7 +2749,7 @@
   "property": "hidden",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "[\"custom_category\", \"custom_name\", \"custom_asset_number\", \"asset_name\", \"asset_category\", \"custom_asset_category_custom\", \"item_code\", \"custom_employee_name\", \"item_name\", \"naming_series\", \"location\", \"image\", \"column_break_3\", \"status\", \"company\", \"asset_owner\", \"asset_owner_company\", \"is_composite_asset\", \"is_composite_component\", \"maintenance_required\", \"custom_maintenance_frequency_type\", \"custom_maintenance_interval\", \"custom__last_maintenance_date\", \"custom__next_maintenance_date\", \"purchase_details_section\", \"is_existing_asset\", \"purchase_receipt\", \"purchase_receipt_item\", \"purchase_invoice\", \"purchase_invoice_item\", \"purchase_date\", \"available_for_use_date\", \"column_break_23\", \"net_purchase_amount\", \"purchase_amount\", \"asset_quantity\", \"additional_asset_cost\", \"total_asset_cost\", \"disposal_date\", \"depreciation_tab\", \"calculate_depreciation\", \"column_break_33\", \"opening_accumulated_depreciation\", \"opening_number_of_booked_depreciations\", \"is_fully_depreciated\", \"section_break_36\", \"finance_books\", \"section_break_33\", \"depreciation_method\", \"value_after_depreciation\", \"total_number_of_depreciations\", \"column_break_24\", \"frequency_of_depreciation\", \"next_depreciation_date\", \"depreciation_schedule_sb\", \"depreciation_schedule_view\", \"insurance_details_tab\", \"policy_number\", \"insurer\", \"insured_value\", \"column_break_48\", \"insurance_start_date\", \"insurance_end_date\", \"comprehensive_insurance\", \"other_info_tab\", \"accounting_dimensions_section\", \"cost_center\", \"section_break_jtou\", \"custodian\", \"default_finance_book\", \"depr_entry_posting_status\", \"booked_fixed_asset\", \"customer\", \"supplier\", \"column_break_51\", \"department\", \"split_from\", \"journal_entry_for_scrap\", \"amended_from\", \"connections_tab\", \"custom_tab_6\", \"custom_maintenance_log\"]"
  },
  {
   "default_value": null,
@@ -3021,7 +3021,7 @@
   "property": "reqd",
   "property_type": "Check",
   "row_name": null,
-  "value": "0"
+  "value": "1"
  },
  {
   "default_value": null,
@@ -3101,7 +3101,7 @@
   "property": "print_hide",
   "property_type": "Check",
   "row_name": null,
-  "value": "0"
+  "value": "1"
  },
  {
   "default_value": null,
@@ -3229,7 +3229,7 @@
   "property": "hidden",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "0"
  },
  {
   "default_value": null,
@@ -3357,7 +3357,7 @@
   "property": "print_hide",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "0"
  },
  {
   "default_value": null,
@@ -3437,7 +3437,7 @@
   "property": "print_hide",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "0"
  },
  {
   "default_value": null,
@@ -3677,7 +3677,7 @@
   "property": "print_hide",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "0"
  },
  {
   "default_value": null,
@@ -3837,7 +3837,7 @@
   "property": "print_hide",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": "0"
  },
  {
   "default_value": null,
@@ -4413,7 +4413,7 @@
   "property": "hidden",
   "property_type": "Check",
   "row_name": null,
-  "value": "0"
+  "value": "1"
  },
  {
   "default_value": null,
@@ -4493,7 +4493,7 @@
   "property": "hidden",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": ""
  },
  {
   "default_value": null,
@@ -4509,7 +4509,7 @@
   "property": "hidden",
   "property_type": "Check",
   "row_name": null,
-  "value": "1"
+  "value": ""
  },
  {
   "default_value": null,
@@ -4541,7 +4541,7 @@
   "property": "hidden",
   "property_type": "Check",
   "row_name": null,
-  "value": "0"
+  "value": "1"
  },
  {
   "default_value": null,
@@ -4609,19 +4609,19 @@
  },
  {
   "default_value": null,
-  "doc_type": "Asset_Item",
+  "doc_type": "Customer",
   "docstatus": 0,
   "doctype": "Property Setter",
   "doctype_or_field": "DocType",
   "field_name": null,
   "is_system_generated": 0,
-  "modified": "2026-02-23 17:08:23.344399",
+  "modified": "2026-03-04 09:36:03.340068",
   "module": null,
-  "name": "Asset_Item-main-title_field",
-  "property": "title_field",
+  "name": "Customer-main-field_order",
+  "property": "field_order",
   "property_type": "Data",
   "row_name": null,
-  "value": "asset_item"
+  "value": "[\"basic_info\", \"naming_series\", \"salutation\", \"customer_name\", \"customer_type\", \"customer_group\", \"column_break0\", \"territory\", \"gender\", \"lead_name\", \"opportunity_name\", \"prospect_name\", \"account_manager\", \"image\", \"defaults_tab\", \"default_currency\", \"default_bank_account\", \"column_break_14\", \"default_price_list\", \"internal_customer_section\", \"is_internal_customer\", \"represents_company\", \"column_break_70\", \"companies\", \"more_info\", \"market_segment\", \"industry\", \"customer_pos_id\", \"website\", \"language\", \"column_break_45\", \"customer_details\", \"supplier_numbers\", \"dashboard_tab\", \"contact_and_address_tab\", \"address_contacts\", \"address_html\", \"column_break1\", \"contact_html\", \"primary_address_and_contact_detail\", \"column_break_26\", \"customer_primary_address\", \"primary_address\", \"column_break_nwor\", \"customer_primary_contact\", \"mobile_no\", \"email_id\", \"first_name\", \"last_name\", \"tax_tab\", \"taxation_section\", \"tax_id\", \"tax_category\", \"column_break_21\", \"tax_withholding_category\", \"tax_withholding_group\", \"accounting_tab\", \"credit_limit_section\", \"payment_terms\", \"credit_limits\", \"default_receivable_accounts\", \"accounts\", \"loyalty_points_tab\", \"loyalty_program\", \"column_break_54\", \"loyalty_program_tier\", \"sales_team_tab\", \"sales_team\", \"sales_team_section\", \"default_sales_partner\", \"column_break_66\", \"default_commission_rate\", \"settings_tab\", \"so_required\", \"dn_required\", \"exempt_from_sales_tax\", \"column_break_53\", \"is_frozen\", \"disabled\", \"portal_users_tab\", \"portal_users\"]"
  },
  {
   "default_value": null,
