@@ -13,17 +13,6 @@
  {
   "docstatus": 0,
   "doctype": "Client Script",
-  "dt": "Asset",
-  "enabled": 1,
-  "modified": "2026-02-15 22:20:33.029431",
-  "module": "Asiaf Development Company",
-  "name": "Auto Fill Item Code From Custom Category",
-  "script": "frappe.ui.form.on('Asset', {\r\n\r\n    custom_asset_category_custom: function(frm) {\r\n\r\n        if (frm.doc.custom_asset_category_custom) {\r\n\r\n            frm.set_value('item_code', frm.doc.custom_asset_category_custom);\r\n\r\n        }\r\n\r\n    }\r\n\r\n});\r\n",
-  "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
   "dt": "Employee",
   "enabled": 1,
   "modified": "2026-02-27 01:55:08.633292",
@@ -59,21 +48,10 @@
   "doctype": "Client Script",
   "dt": "Asset",
   "enabled": 1,
-  "modified": "2026-02-16 03:44:11.744843",
-  "module": "Asiaf Development Company",
-  "name": "Link_to_Link",
-  "script": "",
-  "view": "Form"
- },
- {
-  "docstatus": 0,
-  "doctype": "Client Script",
-  "dt": "Asset",
-  "enabled": 1,
-  "modified": "2026-02-24 18:20:44.600782",
+  "modified": "2026-03-08 22:00:12.744351",
   "module": "Asiaf Development Company",
   "name": "Asset_Category_new",
-  "script": "frappe.ui.form.on('Asset', {\r\n\r\n    // Setup stage\r\n    setup: function(frm) {\r\n        frm.set_query('asset_name', function() {\r\n            return {\r\n                filters: {\r\n                    asset_category_name: frm.doc.custom_category\r\n                }\r\n            };\r\n        });\r\n    },\r\n\r\n    // When category changes\r\n    custom_category: function(frm) {\r\n        frm.set_value('asset_name', null);\r\n        frm.set_value('custom_asset_number', null);\r\n    },\r\n\r\n    // When name is selected\r\n    asset_name: function(frm) {\r\n        if (frm.doc.asset_name) {\r\n            frm.set_value('custom_asset_number', frm.doc.asset_name);\r\n        } else {\r\n            frm.set_value('custom_asset_number', null);\r\n        }\r\n    }\r\n\r\n});",
+  "script": "frappe.ui.form.on('Asset', {\r\n    setup: function(frm) {\r\n        frm.set_query('asset_name', function() {\r\n            return {\r\n                filters: {\r\n                    asset_category_name: frm.doc.custom_category\r\n                }\r\n            };\r\n        });\r\n    },\r\n\r\n    custom_category: function(frm) {\r\n        frm.set_value('asset_name', null);\r\n        frm.set_value('custom_asset_number', null);\r\n    },\r\n\r\n    refresh: function(frm) {\r\n        if (!frm.is_new() && frm.doc.name && frm.doc.custom_asset_number !== frm.doc.name) {\r\n            frm.set_value('custom_asset_number', frm.doc.name);\r\n        }\r\n    }\r\n});",
   "view": "Form"
  }
 ]
