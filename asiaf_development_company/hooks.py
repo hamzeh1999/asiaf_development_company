@@ -6,12 +6,6 @@ app_email = "fshureih@enarainc.com"
 app_license = "mit"
 fixtures = [
     {
-        "dt": "Custom Field"
-    },
-    {
-        "dt": "Property Setter"
-    },
-    {
         "dt": "Client Script"
     },
     {
