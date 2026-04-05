@@ -38,6 +38,10 @@ fixtures = [
 
 # include js, css files in header of desk.html
 app_include_css = "/assets/asiaf_development_company/css/custom.css?v=6"
+doctype_js = {
+    "Vehicle": "public/js/vehicle.js",
+    "Asset": "public/js/assetmaintenance.js"
+}
 # app_include_js = "/assets/asiaf_development_company/js/asiaf_development_company.js"
 
 # include js, css files in header of web template
