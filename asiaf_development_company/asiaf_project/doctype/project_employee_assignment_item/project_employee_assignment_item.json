@@ -8,7 +8,8 @@
  "field_order": [
   "employee",
   "full_name",
-  "iqama_job_title"
+  "iqama_job_title",
+  "status"
  ],
  "fields": [
   {
@@ -29,13 +30,18 @@
    "fieldtype": "Data",
    "label": "Name",
    "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status"
   }
  ],
- "grid_page_length": 50,
+ "grid_page_length": 250,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-03 10:44:28.263436",
+ "modified": "2026-03-11 10:09:35.920098",
  "modified_by": "Administrator",
  "module": "Asiaf Project",
  "name": "Project Employee Assignment Item",

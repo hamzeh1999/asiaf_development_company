@@ -10,9 +10,7 @@ fixtures = [
     },
     {
         "dt": "Server Script"
-    },
-  
-    
+    }
 ]
 
 
@@ -38,11 +36,8 @@ fixtures = [
 
 # include js, css files in header of desk.html
 app_include_css = "/assets/asiaf_development_company/css/custom.css?v=6"
-doctype_js = {
-    "Vehicle": "public/js/vehicle.js",
-    "Asset": "public/js/assetmaintenance.js"
-}
 # app_include_js = "/assets/asiaf_development_company/js/asiaf_development_company.js"
+app_include_js = "/assets/asiaf_development_company/js/shift_utils.js" 
 
 # include js, css files in header of web template
 # web_include_css = "/assets/asiaf_development_company/css/asiaf_development_company.css"
@@ -59,7 +54,15 @@ doctype_js = {
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+    "Project": "public/js/project.js", 
+    "Shift Location": "public/js/shift_location.js",
+    "Shift Assignment": "public/js/shift_assignment.js",
+    "Shift Schedule Assignment": "public/js/shift_schedule_assignment.js",
+    "Shift Assignment Tool": "public/js/shift_assignment_tool.js",
+    "Vehicle": "public/js/vehicle.js",
+    "Asset": "public/js/assetmaintenance.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -136,9 +139,11 @@ doctype_js = {
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
+permission_query_conditions = {
+	"Project": "asiaf_development_company.asiaf_development_company.project.project_query.get_permission_query_conditions",
+    "Task": "asiaf_development_company.asiaf_development_company.project.task_permissions.get_permission_query_conditions",
+    "Timesheet": "asiaf_development_company.asiaf_development_company.project.timesheet_permission.get_permission_query_conditions",
+ }
 #
 # has_permission = {
 # 	"Event": "frappe.desk.doctype.event.event.has_permission",
@@ -148,13 +153,17 @@ doctype_js = {
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "Project": {
+        "before_save": "asiaf_development_company.asiaf_development_company.project.project_restrictions.execute"
+    },
+    "Shift Assignment": {
+        "before_insert": "asiaf_development_company.asiaf_development_company.overrides.shift_assignment.set_custom_project_from_tool"
+    },
+    "Shift Schedule Assignment": {
+        "before_insert": "asiaf_development_company.asiaf_development_company.overrides.shift_schedule_assignment.set_custom_project_from_tool"
+    }
+}
 
 # Scheduled Tasks
 # ---------------
@@ -185,6 +194,8 @@ doctype_js = {
 # Extend DocType Class
 # ------------------------------
 #
+#
+#
 # Specify custom mixins to extend the standard doctype controller.
 # extend_doctype_class = {
 # 	"Task": "asiaf_development_company.custom.task.CustomTaskMixin"
@@ -196,6 +207,19 @@ doctype_js = {
 # override_whitelisted_methods = {
 # 	"frappe.desk.doctype.event.event.get_events": "asiaf_development_company.event.get_events"
 # }
+
+override_doctype_class = {
+	"Shift Assignment Tool": "asiaf_development_company.asiaf_development_company.overrides.shift_assignment_tool.CustomShiftAssignmentTool"
+}
+
+# Boot session
+# ------------
+# Register the boot function so this patch is applied automatically
+# on every session start. This ensures all Project-related Script Reports
+# are filtered according to user permissions without modifying individual reports.
+boot_session = [
+    "asiaf_development_company.asiaf_development_company.project.report_permission_patch.boot",
+]
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
