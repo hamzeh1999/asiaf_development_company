@@ -6,14 +6,11 @@ app_email = "fshureih@enarainc.com"
 app_license = "mit"
 fixtures = [
     {
-        "dt": "Client Script",
-       
+        "dt": "Client Script"
     },
-    
     {
-        "dt": "Server Script",
-    },
-
+        "dt": "Server Script"
+    }
 ]
 
 
@@ -39,6 +36,7 @@ fixtures = [
 
 # include js, css files in header of desk.html
 app_include_css = "/assets/asiaf_development_company/css/custom.css?v=6"
+# app_include_js = "/assets/asiaf_development_company/js/asiaf_development_company.js"
 app_include_js = "/assets/asiaf_development_company/js/shift_utils.js" 
 
 # include js, css files in header of web template
@@ -61,7 +59,9 @@ doctype_js = {
     "Shift Location": "public/js/shift_location.js",
     "Shift Assignment": "public/js/shift_assignment.js",
     "Shift Schedule Assignment": "public/js/shift_schedule_assignment.js",
-    "Shift Assignment Tool": "public/js/shift_assignment_tool.js"
+    "Shift Assignment Tool": "public/js/shift_assignment_tool.js",
+    "Vehicle": "public/js/vehicle.js",
+    "Asset": "public/js/assetmaintenance.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
