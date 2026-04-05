@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "custom_site",
  "creation": "2026-02-25 17:05:24.338092",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -23,6 +24,7 @@
    "fieldname": "site_name",
    "fieldtype": "Data",
    "label": "Site Name",
+   "options": "Administrative Region",
    "read_only": 1
   },
   {
@@ -36,6 +38,7 @@
    "default": "1",
    "fieldname": "active",
    "fieldtype": "Check",
+   "hidden": 1,
    "label": "Active",
    "read_only": 1
   },
@@ -62,6 +65,7 @@
   },
   {
    "default": "0",
+   "description": "Shows how many employees are assigned. Updated automatically.",
    "fieldname": "quantity",
    "fieldtype": "Int",
    "label": "Quantity "
@@ -78,6 +82,7 @@
    "label": "Employees"
   },
   {
+   "description": "Filter and assign employees by job title. Employee records won't be changed.",
    "fieldname": "job_title",
    "fieldtype": "Select",
    "label": "Job Title",
@@ -94,10 +99,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-03 11:09:46.934201",
+ "modified": "2026-03-11 13:27:20.297719",
  "modified_by": "Administrator",
  "module": "Asiaf Project",
  "name": "Employee Project Assignment",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -115,7 +121,9 @@
  ],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "custom_site"
 }
