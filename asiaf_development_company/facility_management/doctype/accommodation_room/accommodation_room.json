@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-04-08 06:09:24.351321",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "floor_number",
+  "room_number",
+  "room_type",
+  "number_of_beds",
+  "room_status",
+  "column_break_fcju",
+  "current_occupancy",
+  "allowed_occupant_group",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "floor_number",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Floor Number"
+  },
+  {
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Room Number"
+  },
+  {
+   "fieldname": "room_type",
+   "fieldtype": "Select",
+   "label": "Room Type",
+   "options": "Standard\nShared\nSupervisor\nStaff\nManagement"
+  },
+  {
+   "fieldname": "number_of_beds",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Number of beds"
+  },
+  {
+   "fieldname": "room_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Room Status",
+   "options": "Available\nOccupied\nPartially Occupied\nUnder Maintenance\nBlocked"
+  },
+  {
+   "fieldname": "column_break_fcju",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "current_occupancy",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Current Occupancy"
+  },
+  {
+   "fieldname": "allowed_occupant_group",
+   "fieldtype": "Select",
+   "label": "Allowed Occupant Group",
+   "options": "Workers\nEngineers\nSupervisors\nStaff\nManagement"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-08 06:33:53.279314",
+ "modified_by": "Administrator",
+ "module": "Facility Management",
+ "name": "Accommodation Room",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
