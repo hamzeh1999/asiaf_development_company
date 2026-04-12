@@ -89,6 +89,9 @@ def _validate_project_manager_role(doc):
 
 # ── Permission helpers ────────────────────────────────────────────────────────
 
+_ADMIN_ROLES = {"System Manager", "Projects Manager", "Tendering Manager"}
+
+
 def _grant_new_pm_permission(doc):
     try:
         pm_user = frappe.db.get_value("Employee", doc.custom_project_manager, "user_id")
@@ -101,6 +104,12 @@ def _grant_new_pm_permission(doc):
                 indicator="orange",
                 alert=True
             )
+            return
+
+        # Admin users already have full project access via their role.
+        # Creating a User Permission for them would restrict them to a single
+        # project, blocking their ability to save or manage other projects.
+        if _ADMIN_ROLES & set(frappe.get_roles(pm_user)):
             return
 
         already_exists = frappe.db.exists("User Permission", {
@@ -227,6 +236,35 @@ def get_project_managers(doctype, txt, searchfield, start, page_len, filters):
         return employees
     
     except Exception as e:
-        frappe.log_error(f"Error in get_project_managers: {str(e)}\n{frappe.get_traceback()}", 
-                        "Project Manager Filter Error")
-        return []
+        frappe.log_error(f"Error in get_project_managers: {str(e)}\n{frappe.get_traceback()}",
+                         "Project Manager Filter Error")
+
+
+def cleanup_admin_user_project_permissions():
+    """
+    One-time utility: Remove stale Project User Permissions for admin-role users.
+
+    Admin users (System Manager, Projects Manager, Tendering Manager) should never
+    have Project User Permissions — those permissions restrict document-level write
+    access to a single project and break their ability to manage other projects.
+
+    Run on production after deploying this fix:
+        bench --site <site> execute \\
+            asiaf_development_company.asiaf_development_company.project.project_restrictions.cleanup_admin_user_project_permissions
+    """
+    perms = frappe.get_all(
+        "User Permission",
+        filters={"allow": "Project"},
+        fields=["name", "user", "for_value"],
+    )
+
+    removed = 0
+    for perm in perms:
+        if _ADMIN_ROLES & set(frappe.get_roles(perm["user"])):
+            frappe.delete_doc("User Permission", perm["name"], ignore_permissions=True)
+            frappe.db.commit()
+            print(f"Removed: {perm['name']} — user={perm['user']} project={perm['for_value']}")
+            removed += 1
+
+    print(f"\nDone. Removed {removed} stale User Permission(s) for admin users.")
+    return removed
