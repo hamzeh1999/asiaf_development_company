@@ -13,9 +13,12 @@ def get_permission_query_conditions(user=None):
         escaped_user = frappe.db.escape(user)
 
         # ── Full visibility ───────────────────────────────────────────────────
+        # Admin roles always see all projects, regardless of User Permissions or project_manager assignment
         admin_roles = {"System Manager", "Projects Manager", "Tendering Manager"}
         if admin_roles & set(user_roles):
-            return ""
+            # Return a tautology that guarantees all rows are visible
+            # This ensures that User Permission Rules don't restrict admin access
+            return "1=1"
 
         # ── Resolve Employee record ───────────────────────────────────────────
         employee = frappe.db.get_value("Employee", {"user_id": user}, "name")
