@@ -239,7 +239,9 @@ boot_session = [
 
 # Request Events
 # ----------------
-# before_request = ["asiaf_development_company.utils.before_request"]
+before_request = [
+    "asiaf_development_company.asiaf_development_company.project.report_permission_patch.apply"
+]
 # after_request = ["asiaf_development_company.utils.after_request"]
 
 # Job Events
