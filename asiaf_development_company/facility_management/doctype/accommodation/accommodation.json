@@ -1,0 +1,300 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "FAC-ACC-.#####",
+ "creation": "2026-04-07 07:00:52.214715",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_information_section",
+  "column_break_1_column",
+  "city",
+  "residential_area",
+  "street_name",
+  "accommodation_name",
+  "building_number",
+  "column_break_fuct",
+  "accommodation_type",
+  "ownership_type",
+  "status",
+  "allowed_occupant_group",
+  "building_information_tab",
+  "number_of_floors",
+  "year_of_construction",
+  "total_capacity",
+  "column_break_qcmw",
+  "has_parking",
+  "number_of_parking_spaces",
+  "number_of_rooms",
+  "building_condition",
+  "lease_details_tab",
+  "contract_information_section",
+  "column_break_wftj",
+  "contract_number",
+  "monthly_rent_amount",
+  "column_break_abhn",
+  "lease_start_date",
+  "lease_end_date",
+  "landlord_information_section",
+  "landlord_name",
+  "landlord_phone",
+  "landlord_email",
+  "column_break_kjre",
+  "landlord_address",
+  "payment_and_documents_section",
+  "payment_frequency",
+  "contract_attachment",
+  "column_break_lttr",
+  "lease_notes",
+  "rooms_tab",
+  "rooms"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "accommodation_name",
+   "fieldtype": "Data",
+   "label": "Building Name"
+  },
+  {
+   "fieldname": "accommodation_type",
+   "fieldtype": "Select",
+   "label": "Accommodation Type",
+   "options": "Building\nCamp\nVilla\nApartment"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nInactive\nUnder Maintenance"
+  },
+  {
+   "fieldname": "building_number",
+   "fieldtype": "Data",
+   "label": "Building Number"
+  },
+  {
+   "fieldname": "ownership_type",
+   "fieldtype": "Select",
+   "label": "Ownership Type",
+   "options": "Owned\nRented"
+  },
+  {
+   "fieldname": "column_break_1_column",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fuct",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "residential_area",
+   "fieldtype": "Data",
+   "label": "Residential Area"
+  },
+  {
+   "fieldname": "street_name",
+   "fieldtype": "Data",
+   "label": "Street Name"
+  },
+  {
+   "fieldname": "building_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Building Information"
+  },
+  {
+   "fieldname": "number_of_floors",
+   "fieldtype": "Int",
+   "label": "Number of Floors"
+  },
+  {
+   "fieldname": "number_of_rooms",
+   "fieldtype": "Int",
+   "label": "Number of Rooms"
+  },
+  {
+   "fieldname": "total_capacity",
+   "fieldtype": "Int",
+   "label": "Total Capacity"
+  },
+  {
+   "fieldname": "allowed_occupant_group",
+   "fieldtype": "Select",
+   "label": "Allowed Occupant Group",
+   "options": "Workers\nEngineers\nSupervisors\nStaff\nManagement"
+  },
+  {
+   "fieldname": "year_of_construction",
+   "fieldtype": "Int",
+   "label": "Year of Construction"
+  },
+  {
+   "fieldname": "column_break_qcmw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "has_parking",
+   "fieldtype": "Check",
+   "label": "Has Parking"
+  },
+  {
+   "fieldname": "number_of_parking_spaces",
+   "fieldtype": "Int",
+   "label": "Number of Parking Spaces"
+  },
+  {
+   "fieldname": "building_condition",
+   "fieldtype": "Select",
+   "label": "Building Condition",
+   "options": "Excellent\nGood\nNeeds Maintenance\nUnder Renovation"
+  },
+  {
+   "depends_on": "eval:doc.ownership_type==\"Rented\"",
+   "fieldname": "lease_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Lease Details"
+  },
+  {
+   "fieldname": "contract_information_section",
+   "fieldtype": "Section Break",
+   "label": "Contract Information"
+  },
+  {
+   "depends_on": "eval:doc.ownership_type==\"Rented\"",
+   "fieldname": "column_break_wftj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contract_number",
+   "fieldtype": "Data",
+   "label": "Contract Number"
+  },
+  {
+   "fieldname": "monthly_rent_amount",
+   "fieldtype": "Currency",
+   "label": "Monthly Rent Amount"
+  },
+  {
+   "fieldname": "column_break_abhn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lease_start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Lease Start Date",
+   "mandatory_depends_on": "eval:doc.ownership_type==\"Rented\""
+  },
+  {
+   "fieldname": "lease_end_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Lease End Date",
+   "mandatory_depends_on": "eval:doc.ownership_type==\"Rented\""
+  },
+  {
+   "fieldname": "landlord_information_section",
+   "fieldtype": "Section Break",
+   "label": "Landlord Information"
+  },
+  {
+   "fieldname": "landlord_name",
+   "fieldtype": "Data",
+   "label": "Landlord Name"
+  },
+  {
+   "fieldname": "landlord_phone",
+   "fieldtype": "Phone",
+   "label": "Landlord Phone"
+  },
+  {
+   "fieldname": "landlord_email",
+   "fieldtype": "Data",
+   "label": "Landlord Email"
+  },
+  {
+   "fieldname": "column_break_kjre",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "landlord_address",
+   "fieldtype": "Small Text",
+   "label": "Landlord Address"
+  },
+  {
+   "fieldname": "payment_and_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Payment and Documents"
+  },
+  {
+   "fieldname": "payment_frequency",
+   "fieldtype": "Select",
+   "label": "Payment Frequency",
+   "options": "Monthly\nQuarterly\nSemi-Annual\nAnnual"
+  },
+  {
+   "fieldname": "contract_attachment",
+   "fieldtype": "Attach",
+   "label": "Contract Attachment"
+  },
+  {
+   "fieldname": "column_break_lttr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "lease_notes",
+   "fieldtype": "Small Text",
+   "label": "Lease Notes"
+  },
+  {
+   "fieldname": "rooms_tab",
+   "fieldtype": "Tab Break",
+   "label": "Rooms"
+  },
+  {
+   "fieldname": "rooms",
+   "fieldtype": "Table",
+   "label": "Rooms",
+   "options": "Accommodation Room"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-08 06:44:59.298052",
+ "modified_by": "Administrator",
+ "module": "Facility Management",
+ "name": "Accommodation",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "accommodation_name"
+}
