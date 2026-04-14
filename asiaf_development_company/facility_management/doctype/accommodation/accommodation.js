@@ -1,8 +1,17 @@
-// Copyright (c) 2026, EnAi Team Development & Research and contributors
-// For license information, please see license.txt
+frappe.ui.form.on('Accommodation', {
+    setup(frm) {
+        frm.set_query('asiaf_buildings', function() {
+            return {
+                filters: {
+                    asset_category: 'Buildings'
+                }
+            };
+        });
+    },
 
-// frappe.ui.form.on("Accommodation", {
-// 	refresh(frm) {
-
-// 	},
-// });
+    ownership_type(frm) {
+        if (frm.doc.ownership_type !== 'Owned') {
+            frm.set_value('asiaf_buildings', '');
+        }
+    }
+});

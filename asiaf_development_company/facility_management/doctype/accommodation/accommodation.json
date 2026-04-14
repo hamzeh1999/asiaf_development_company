@@ -8,14 +8,15 @@
  "field_order": [
   "basic_information_section",
   "column_break_1_column",
+  "ownership_type",
   "city",
   "residential_area",
   "street_name",
   "accommodation_name",
   "building_number",
   "column_break_fuct",
+  "asiaf_buildings",
   "accommodation_type",
-  "ownership_type",
   "status",
   "allowed_occupant_group",
   "building_information_tab",
@@ -266,12 +267,20 @@
    "fieldtype": "Table",
    "label": "Rooms",
    "options": "Accommodation Room"
+  },
+  {
+   "depends_on": "eval:doc.ownership_type==\"Owned\"",
+   "fieldname": "asiaf_buildings",
+   "fieldtype": "Link",
+   "label": "Asiaf buildings",
+   "mandatory_depends_on": "eval:doc.ownership_type==\"Owned\"",
+   "options": "Asset"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-04-08 06:44:59.298052",
+ "modified": "2026-04-14 15:22:07.977596",
  "modified_by": "Administrator",
  "module": "Facility Management",
  "name": "Accommodation",
