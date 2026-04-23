@@ -1,71 +1,83 @@
 import frappe
+from frappe import _
 
 
-def get_permission_query_conditions(user=None):
-    if not user:
-        user = frappe.session.user
+def get_permission_query_conditions(user: str | None = None) -> str | None:
+    """
+    Permission query conditions for Project doctype.
 
-    if not user or not isinstance(user, str):
+    - Admins (System Manager, Projects Manager, Tendering Manager): full access
+    - Project Manager: scoped to assigned projects (custom_project_manager or Project User table)
+    - Everything else: delegated to Frappe Role Permission Manager
+    """
+    # ── Resolve user ──────────────────────────────────────────────────────────
+    user = user or frappe.session.user
+
+    if not user or not isinstance(user, str) or user == "Guest":
         return "1=0"
 
     try:
-        user_roles = frappe.get_roles(user)
-        escaped_user = frappe.db.escape(user)
+        user_roles: set[str] = set(frappe.get_roles(user))
 
-        # ── Full visibility ───────────────────────────────────────────────────
-        # Admin roles always see all projects, regardless of User Permissions or project_manager assignment
-        admin_roles = {"System Manager", "Projects Manager", "Tendering Manager"}
-        if admin_roles & set(user_roles):
-            # Return a tautology that guarantees all rows are visible
-            # This ensures that User Permission Rules don't restrict admin access
+        # ── Admins: full visibility ───────────────────────────────────────────
+        if _is_admin(user_roles):
             return "1=1"
 
-        # ── Resolve Employee record ───────────────────────────────────────────
-        employee = frappe.db.get_value("Employee", {"user_id": user}, "name")
+        # ── Project Manager: scoped visibility ───────────────────────────────
+        if "Project Manager" in user_roles:
+            return _get_project_manager_conditions(user, user_roles)
 
-        restricted_roles = {"Project Manager", "Projects User"}
-        has_restricted_role = bool(restricted_roles & set(user_roles))
-
-        if has_restricted_role:
-            if not employee:
-                frappe.log_error(
-                    message=(
-                        f"User '{user}' has a restricted Project role "
-                        f"({', '.join(r for r in restricted_roles if r in user_roles)}) "
-                        f"but has no linked Employee record. Access denied."
-                    ),
-                    title="Project Permission – Missing Employee Record"
-                )
-                return "1=0"
-
-            escaped_employee = frappe.db.escape(employee)
-            return f"""
-            (
-                `tabProject`.custom_project_manager = {escaped_employee}
-                OR EXISTS (
-                    SELECT 1 FROM `tabProject User`
-                    WHERE parent = `tabProject`.name
-                    AND user = {escaped_user}
-                )
-            )
-            """
-
-        # ── General staff fallback ────────────────────────────────────────────
-        if employee:
-            return f"""
-            EXISTS (
-                SELECT 1 FROM `tabProject User`
-                WHERE parent = `tabProject`.name
-                AND user = {escaped_user}
-            )
-            """
-
-        # ── No access ─────────────────────────────────────────────────────────
-        return "1=0"
+        # ── Everything else: Frappe handles it ───────────────────────────────
+        return None
 
     except Exception:
         frappe.log_error(
             message=frappe.get_traceback(),
             title="Project Permission Query Error"
         )
-        return "1=0"
+        return None
+
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
+
+def _is_admin(user_roles: set[str]) -> bool:
+    return bool({"System Manager", "Projects Manager", "Tendering Manager"} & user_roles)
+
+
+def _get_project_manager_conditions(user: str, user_roles: set[str]) -> str | None:
+    """
+    Returns scoped SQL for Project Manager role.
+    Falls back to None (Frappe default) if no Employee record is linked.
+    """
+    employee = frappe.db.get_value(
+        "Employee",
+        {"user_id": user, "status": "Active"},  # only active employees
+        "name",
+        cache=True  # cache to avoid repeated DB hits
+    )
+
+    if not employee:
+        frappe.log_error(
+            message=(
+                f"User '{user}' has the 'Project Manager' role "
+                f"but has no linked active Employee record. "
+                f"Falling back to Frappe default permissions."
+            ),
+            title="Project Permission – Missing Employee Record"
+        )
+        return None
+
+    escaped_user     = frappe.db.escape(user)
+    escaped_employee = frappe.db.escape(employee)
+
+    return f"""
+        (
+            `tabProject`.custom_project_manager = {escaped_employee}
+            OR EXISTS (
+                SELECT 1
+                FROM `tabProject User`
+                WHERE `tabProject User`.parent = `tabProject`.name
+                AND   `tabProject User`.user   = {escaped_user}
+            )
+        )
+    """
